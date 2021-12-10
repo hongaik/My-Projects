@@ -162,7 +162,7 @@ Lasso|497|NA|0.95688|0.92883|16505|20468|
 ElasticNet|31|0.95|0.95511|0.92539|16842|20956
 Ensemble|NA|NA|NA|NA|16156|20461
 
-For all 3 models, we observed some overfitting where the test score is worse than the train score. However, the difference is remarkably small given that the we started with an extraordinarily large number of features. As a side note, we have also ran the same models on the same dataset without `PolynomialFeatures`, but the results are worse. 
+For all 3 models, we observed some overfitting where the test score is worse than the train score. However, the difference is remarkably small given that the we started with an extraordinarily large number of features. As a side note, we have also ran the same models on the same dataset without `PolynomialFeatures`, but the results are worse. The interaction terms also presented stronger correlation with the target variable.
 
 The best model appears to be Lasso, possibly due to its ability to completely suppress 94% of the features, leaving only the truly important ones.
 
@@ -194,7 +194,7 @@ This score corresponds to the ensemble model. As we can see, stacking the models
     
 - Based on the top 5 features, we see that Overall Cond and Gr Living Area appear more than once.
     
-- SalePrice is most sensitive to the feature "Overall Qual-Gr Liv Area". Each unit increase in this feature results in an increase of $16,583 of SalePrice.
+- SalePrice is most sensitive to the feature "Overall Qual-Gr Liv Area". Each unit increase in this feature results in an increase of $16,883 of SalePrice.
 
 - Based on the bottom 5 features, we see that Neighborhood D appears quite a few times, indicating that this cluster of neighborhoods (SWISU, Sawyer, BrkSide, Edwards, OldTown, BrDale, IDOTRR and MeadowV) is not doing well in terms of price appreciation. These neighborhoods could attract lower housing prices due to older houses (such as OldTown) or perhaps some local demographic properties of that neighborhood.
 
@@ -206,35 +206,31 @@ This score corresponds to the ensemble model. As we can see, stacking the models
     
 - To make the model more generalizable, it would be better to cut down on the number of variables and use only general features, such as distance to a transport system. This would of course come at an expense of the predictive power of the model.
 
+- Though we see that certain features appear in predictors that help and hurt house prices, judging by the significance of the impact, these features still overall improve house prices. For example, Masonry Veneer Area appears in both sets of predictors that hurt/help prices, but the extent is larger in the predictor that help house prices. Moreover, the model suggests that the impact is only negative if, concurrently, the house is also situated in Neighborhood D. In other words, if the house was in another neighborhood, the impact may not be negative.    
+
 # Recommendations
 ##### [Back to Contents](#Contents:)
     
-- Based on the top 10 predictors, there are 10 unique features.
-    - 1st Flr SF
-    - BsmtFin SF 1
-    - Functional
-    - Garage Cars
-    - Gr Liv Area
-    - Land Contour
-    - Lot Area
-    - Mas Vnr Area
-    - Overall Cond
-    - Overall Qual
-<br></br>
+Our model suggests to optimise two features simultaneously for the best results. For homeowners,
 
-- From the perspective of a homeowner trying to improve the value of his/her house, only 3 out of 10 of the features are amenable. The other 7 are more or less fixed when the house is built.
-    - Garage Cars - Have a larger garage space
-    - Lot Area - Have a larger lot size
-    - Mas Vnr Area - Have a larger masonry veneer wall
-<br></br>
-- From the perspective of a homebuyer looking to eventually flip the house for a profit, the model recommends the following features:
-    - Larger houses in terms of area
-    - Houses on flat ground or hillside
-    - Overall good quality in terms of material, finish and condition of the house
-    - Small or no garage
-    - Small lot area
-    - Small or no masonry veneer wall
-<br></br>    
-- The last 3 recommendations are there such that after the purchase of the house, the new homeowner can remodel the house to include these features which would then improve the house value.
+- Improve on Overall Condition, Overall Quality, 1st Floor Area  and Ground Living Area, since these are continuous variables.
+- Expand Basement Finished Area only if the house is situated on flat land (Land Contour)
+- Expand Masonry Veneer Area only if the house is situated on flat land (Land Contour)
+- If the house is in neighborhood D, reduce the areas of Basement Finished, Total Basement and Masonry Veneer
+- Minimise the Basement areas
+- Sell the house while it is still young
+
+For homebuyers,
     
-- From a cursory glance at the top 10 predictors that hurt house values, three features stand out - Neighborhoods C and D and Age sold. Homeowners should not wait too long to sell their houses while homebuyers should avoid buying houses which have been built for a long time, and/or situated within these 2 neighborhoods.    
+- Buy houses with good Overall Condition, Overall Quality, and large 1st Floor Area  and Ground Living Area
+- If the house is situated on flat land, buy houses with small or no Basement Finished Area and Masonry Veneer Area, so that you can increase these aspects later on
+- If the house is in neighborhood D, avoid those with Basement Finished, Total Basement and Masonry Veneer Areas
+- Buy houses with small or no Basement areas
+- Buy houses which are young, since prices deteriorate with age    
+
+### Possible Enhancements
+
+Other avenues we can explore to improve our predictions include:
+- Trial other predictive models (eg. RandomForest, Support Vector Machine)
+- Obtain more data
+- Obtain more general features of the house such as crime rate, ethnicity, distance to amenities or facilities
