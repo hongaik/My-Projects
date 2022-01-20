@@ -5,6 +5,7 @@ import streamlit as st
 import re
 from nltk.stem import WordNetLemmatizer
 
+nltk.download('wordnet')
 lr = pickle.load(open('trained_lr.sav', 'rb'))
 tfidf = pickle.load(open('trained_tfidf.sav', 'rb'))
 
