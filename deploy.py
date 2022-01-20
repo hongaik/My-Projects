@@ -4,6 +4,7 @@ import pandas as pd
 import streamlit as st
 import re
 from nltk.stem import WordNetLemmatizer
+import nltk
 
 nltk.download('wordnet')
 lr = pickle.load(open('trained_lr.sav', 'rb'))
