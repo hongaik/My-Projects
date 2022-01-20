@@ -4,7 +4,6 @@ import pandas as pd
 import streamlit as st
 import re
 from nltk.stem import WordNetLemmatizer
-import sklearn
 
 lr = pickle.load(open('trained_lr.sav', 'rb'))
 tfidf = pickle.load(open('trained_tfidf.sav', 'rb'))
