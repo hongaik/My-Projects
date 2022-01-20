@@ -5,8 +5,8 @@ import streamlit as st
 import re
 from nltk.stem import WordNetLemmatizer
 
-lr = pickle.load(open('C:/HA/DSI/my_materials/DSIF-SG-3/project_3/models/trained_lr.sav', 'rb'))
-tfidf = pickle.load(open('C:/HA/DSI/my_materials/DSIF-SG-3/project_3/models/trained_tfidf.sav', 'rb'))
+lr = pickle.load(open('trained_lr.sav', 'rb'))
+tfidf = pickle.load(open('trained_tfidf.sav', 'rb'))
 
 def cleaner(text):
     
