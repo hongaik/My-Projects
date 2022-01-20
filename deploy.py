@@ -51,6 +51,9 @@ def main():
     
     st.title('Reddit Classification Web App')
     
+    st.markdown('The underlying model was trained on ~14,000 sub-reddits from r/Zoom and r/MicrosoftTeams, with the goal of predicting the sub-reddit given a string of words (submission)')
+    st.markdown('The model is only able to output 2 possible results!')
+    
     text = st.text_input('Type your content here!')
     
     if st.button('Click for predictions!'):
