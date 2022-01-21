@@ -7,8 +7,8 @@ from nltk.stem import WordNetLemmatizer
 import nltk
 
 nltk.download('wordnet')
-lr = pickle.load(open('trained_lr.sav', 'rb'))
-tfidf = pickle.load(open('trained_tfidf.sav', 'rb'))
+lr = pickle.load(open('Reddit_Classification/models/trained_lr.sav', 'rb'))
+tfidf = pickle.load(open('Reddit_Classification/models/trained_tfidf.sav', 'rb'))
 
 def cleaner(text):
     
