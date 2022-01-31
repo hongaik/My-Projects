@@ -57,8 +57,6 @@ def run_loop(list_of_guesses, list_of_possible_ans):
     '''
     Returns the best word
     '''
-    st.markdown(len(list_of_guesses))
-    st.markdown(len(list_of_possible_ans))
     
     if len(list_of_possible_ans) == 0:
         return 'The list of possible answers is empty!'
@@ -70,9 +68,6 @@ def run_loop(list_of_guesses, list_of_possible_ans):
     guess = {}
     my_bar = st.progress(0.0)
     i = 0.0
-    
-    st.markdown(len(list_of_guesses))
-    st.markdown(len(list_of_possible_ans))
     
     for word in list_of_guesses:
         
