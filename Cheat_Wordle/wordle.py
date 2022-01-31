@@ -3,10 +3,10 @@ import re
 
 def reset_word_list():
 
-    with open('wordle-allowed-guesses.txt') as file:
+    with open('Cheat_Wordle/wordle-allowed-guesses.txt') as file:
         allowed = [line.rstrip() for line in file]
 
-    with open('wordle-answers-alphabetical.txt') as file:
+    with open('Cheat_Wordle/wordle-answers-alphabetical.txt') as file:
         answer = [line.rstrip() for line in file]
     
     return allowed + answer
