@@ -1,5 +1,6 @@
 import streamlit as st
 import re
+import numpy as np
 
 def reset_word_list():
 
@@ -59,6 +60,10 @@ def run_loop(list_of_guesses, list_of_possible_ans):
     
     if len(list_of_possible_ans) == 0:
         return 'The list of possible answers is empty!'
+    
+    if len(list_of_guesses) * len(list_of_possible_ans) > 10_000_000:
+        k = 10_000_000 / len(list_of_possible_ans)
+        list_of_guesses = list(np.random.choice(list_of_guesses, size=k, replace=False))
     
     guess = {}
     my_bar = st.progress(0.0)
