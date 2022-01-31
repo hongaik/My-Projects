@@ -99,7 +99,7 @@ def main():
                 based on the app's recommended words. To try it on previous Wordle puzzles, visit [here](https://www.devangthakkar.com/wordle_archive/?222).
                 ''')
                 
-    st.markdown('_Algorithm credits to Sherman_')
+    st.markdown('_Algorithm credits to Sherman [[website]](https://comp.nus.edu.sg/~yuens)_')
     
     if st.button('Click to start a new game!'):
         st.session_state.list_of_possible_ans = reset_word_list()  
