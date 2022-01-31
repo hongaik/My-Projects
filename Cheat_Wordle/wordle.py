@@ -57,18 +57,23 @@ def run_loop(list_of_guesses, list_of_possible_ans):
     '''
     Returns the best word
     '''
+    st.markdown(len(list_of_guesses))
+    st.markdown(len(list_of_possible_ans))
     
     if len(list_of_possible_ans) == 0:
         return 'The list of possible answers is empty!'
     
-    if len(list_of_guesses) * len(list_of_possible_ans) > 10_000_000:
-        k = 10_000_000 / len(list_of_possible_ans)
+    if len(list_of_guesses) * len(list_of_possible_ans) > 2_000_000:
+        k = round(2_000_000 / len(list_of_possible_ans))
         list_of_guesses = list(np.random.choice(list_of_guesses, size=k, replace=False))
     
     guess = {}
     my_bar = st.progress(0.0)
     i = 0.0
-
+    
+    st.markdown(len(list_of_guesses))
+    st.markdown(len(list_of_possible_ans))
+    
     for word in list_of_guesses:
         
         clues_dict = {}
@@ -103,6 +108,8 @@ def main():
                 [Adversarial Wordle/Absurdle](https://qntm.org/files/wordle/index.html). For Wordle, you should get the answer within at most 5 tries,
                 based on the app's recommended words. To try it on previous Wordle puzzles, visit [here](https://www.devangthakkar.com/wordle_archive/?222).
                 ''')
+    st.markdown('_Edited 20220131: Reduced pairwise threshold to 2 million for faster runtime_')
+
                 
     st.markdown('_Algorithm credits to Sherman [[website]](https://comp.nus.edu.sg/~yuens)_')
     
