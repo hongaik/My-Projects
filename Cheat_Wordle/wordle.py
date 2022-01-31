@@ -2,11 +2,11 @@ import streamlit as st
 import re
 
 def reset_word_list():
-    
-    with open('C:/HA/DSI/Capstone/wordle/wordle-allowed-guesses.txt') as file:
+
+    with open('wordle-allowed-guesses.txt') as file:
         allowed = [line.rstrip() for line in file]
 
-    with open('C:/HA/DSI/Capstone/wordle/wordle-answers-alphabetical.txt') as file:
+    with open('wordle-answers-alphabetical.txt') as file:
         answer = [line.rstrip() for line in file]
     
     return allowed + answer
@@ -91,7 +91,7 @@ def run_loop(list_of_guesses, list_of_possible_ans):
 def main():
     
     st.title('Cheating Wordle App')
-    st.markdown('_By Hong Aik_ [[LinkedIn]](https://www.linkedin.com/in/hongaikgoh/)')
+    st.markdown('_By Hong Aik [[LinkedIn]](https://www.linkedin.com/in/hongaikgoh/)_')
     
     st.markdown('''
                 This app was built based on the deterministic and exhaustive nature of Wordle. You may try this with Wordle, or 
@@ -142,6 +142,7 @@ def main():
     st.subheader('REPEAT STEPS AS NECESSARY')
     
     st.markdown('_Questions? Write to goh.hongaik@gmail.com_')
-    st.markdown('_Click_ [here]( _for source code_')
+    st.markdown('_Click [here](https://github.com/hongaik/My-Projects/blob/main/Cheat_Wordle/wordle.py) for source code_')
+    
 if __name__ == '__main__':
     main()
